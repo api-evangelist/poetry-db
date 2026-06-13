@@ -1,0 +1,450 @@
+openapi: 3.0.3
+info:
+  title: PoetryDB API
+  description: >
+    PoetryDB is a public REST API providing programmatic access to a database
+    of English-language poems. Search by author, title, line content, or line
+    count. No authentication or API key is required. Responses are JSON by
+    default; append `.text` to any path for plain-text output.
+  version: 1.0.0
+  license:
+    name: GNU General Public License v2.0
+    url: https://www.gnu.org/licenses/old-licenses/gpl-2.0.html
+  contact:
+    name: thundercomb
+    url: https://github.com/thundercomb
+externalDocs:
+  description: Official README documentation
+  url: https://github.com/thundercomb/poetrydb/blob/master/README.md
+servers:
+  - url: https://poetrydb.org
+    description: Production server
+
+paths:
+  /author:
+    get:
+      summary: List all authors
+      description: Returns a list of all authors in the database.
+      operationId: listAuthors
+      tags:
+        - Author
+      responses:
+        '200':
+          description: Array of author names
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  authors:
+                    type: array
+                    items:
+                      type: string
+              example:
+                authors:
+                  - "Adam Lindsay Gordon"
+                  - "Alan Seeger"
+                  - "Alexander Pope"
+                  - "Emily Dickinson"
+                  - "William Shakespeare"
+
+  /author/{author}:
+    get:
+      summary: Search poems by author
+      description: >
+        Returns all poems whose author name contains the search term (partial
+        match). Append `:abs` to the search term for exact matching.
+      operationId: getPoemsByAuthor
+      tags:
+        - Author
+      parameters:
+        - name: author
+          in: path
+          required: true
+          description: >
+            Author name to search for. Use partial text for a substring match,
+            or append `:abs` for an exact match (e.g. `William Shakespeare:abs`).
+          schema:
+            type: string
+          example: Shakespeare
+      responses:
+        '200':
+          description: Array of matching poems
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PoemList'
+        '404':
+          description: No poems found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/NotFound'
+
+  /author/{author}/{outputFields}:
+    get:
+      summary: Search poems by author, return selected fields
+      description: >
+        Returns selected fields from poems matching the author search. Specify
+        one or more output fields separated by commas (e.g. `title,linecount`).
+        Use `all` to return all fields.
+      operationId: getPoemsByAuthorFields
+      tags:
+        - Author
+      parameters:
+        - name: author
+          in: path
+          required: true
+          description: Author name to search for.
+          schema:
+            type: string
+          example: Shakespeare
+        - name: outputFields
+          in: path
+          required: true
+          description: >
+            Comma-separated list of fields to include in the response.
+            Allowed values: `author`, `title`, `lines`, `linecount`, `all`.
+          schema:
+            type: string
+          example: title,linecount
+      responses:
+        '200':
+          description: Array of poems with selected fields
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  type: object
+        '404':
+          description: No poems found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/NotFound'
+
+  /title:
+    get:
+      summary: List all poem titles
+      description: Returns a list of all poem titles in the database.
+      operationId: listTitles
+      tags:
+        - Title
+      responses:
+        '200':
+          description: Array of poem titles
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  titles:
+                    type: array
+                    items:
+                      type: string
+
+  /title/{title}:
+    get:
+      summary: Search poems by title
+      description: >
+        Returns all poems whose title contains the search term (partial match).
+        Append `:abs` for exact matching.
+      operationId: getPoemsByTitle
+      tags:
+        - Title
+      parameters:
+        - name: title
+          in: path
+          required: true
+          description: >
+            Title to search for. Partial match by default; append `:abs` for
+            exact match.
+          schema:
+            type: string
+          example: Ozymandias
+      responses:
+        '200':
+          description: Array of matching poems
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PoemList'
+        '404':
+          description: No poems found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/NotFound'
+
+  /title/{title}/{outputFields}:
+    get:
+      summary: Search poems by title, return selected fields
+      operationId: getPoemsByTitleFields
+      tags:
+        - Title
+      parameters:
+        - name: title
+          in: path
+          required: true
+          schema:
+            type: string
+          example: Ozymandias
+        - name: outputFields
+          in: path
+          required: true
+          schema:
+            type: string
+          example: author,linecount
+      responses:
+        '200':
+          description: Array of poems with selected fields
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  type: object
+        '404':
+          description: No poems found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/NotFound'
+
+  /lines/{lines}:
+    get:
+      summary: Search poems by line content
+      description: >
+        Returns all poems that contain the given text within their lines.
+        Partial match by default; append `:abs` for exact line matching.
+      operationId: getPoemsByLines
+      tags:
+        - Lines
+      parameters:
+        - name: lines
+          in: path
+          required: true
+          description: Text to search for within poem lines.
+          schema:
+            type: string
+          example: antique land
+      responses:
+        '200':
+          description: Array of matching poems
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PoemList'
+        '404':
+          description: No poems found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/NotFound'
+
+  /lines/{lines}/{outputFields}:
+    get:
+      summary: Search poems by line content, return selected fields
+      operationId: getPoemsByLinesFields
+      tags:
+        - Lines
+      parameters:
+        - name: lines
+          in: path
+          required: true
+          schema:
+            type: string
+          example: antique land
+        - name: outputFields
+          in: path
+          required: true
+          schema:
+            type: string
+          example: title,author
+      responses:
+        '200':
+          description: Array of poems with selected fields
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  type: object
+        '404':
+          description: No poems found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/NotFound'
+
+  /linecount/{linecount}:
+    get:
+      summary: Search poems by line count
+      description: Returns all poems with exactly the specified number of lines.
+      operationId: getPoemsByLinecount
+      tags:
+        - Linecount
+      parameters:
+        - name: linecount
+          in: path
+          required: true
+          description: Exact number of lines the poem must have.
+          schema:
+            type: integer
+            minimum: 1
+          example: 14
+      responses:
+        '200':
+          description: Array of matching poems
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PoemList'
+        '404':
+          description: No poems found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/NotFound'
+
+  /linecount/{linecount}/{outputFields}:
+    get:
+      summary: Search poems by line count, return selected fields
+      operationId: getPoemsByLinecountFields
+      tags:
+        - Linecount
+      parameters:
+        - name: linecount
+          in: path
+          required: true
+          schema:
+            type: integer
+            minimum: 1
+          example: 14
+        - name: outputFields
+          in: path
+          required: true
+          schema:
+            type: string
+          example: title,author
+      responses:
+        '200':
+          description: Array of poems with selected fields
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  type: object
+        '404':
+          description: No poems found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/NotFound'
+
+  /random/{count}:
+    get:
+      summary: Retrieve random poems
+      description: Returns the specified number of randomly selected poems.
+      operationId: getRandomPoems
+      tags:
+        - Random
+      parameters:
+        - name: count
+          in: path
+          required: true
+          description: Number of random poems to return.
+          schema:
+            type: integer
+            minimum: 1
+          example: 3
+      responses:
+        '200':
+          description: Array of random poems
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PoemList'
+
+  /random/{count}/{outputFields}:
+    get:
+      summary: Retrieve random poems, return selected fields
+      operationId: getRandomPoemsFields
+      tags:
+        - Random
+      parameters:
+        - name: count
+          in: path
+          required: true
+          schema:
+            type: integer
+            minimum: 1
+          example: 3
+        - name: outputFields
+          in: path
+          required: true
+          schema:
+            type: string
+          example: title,author
+      responses:
+        '200':
+          description: Array of random poems with selected fields
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  type: object
+
+components:
+  schemas:
+    Poem:
+      type: object
+      description: A poem returned by the PoetryDB API.
+      properties:
+        title:
+          type: string
+          description: The poem's title.
+          example: "Ozymandias"
+        author:
+          type: string
+          description: The poem's author.
+          example: "Percy Bysshe Shelley"
+        lines:
+          type: array
+          description: Array of lines constituting the poem's body.
+          items:
+            type: string
+          example:
+            - "I met a traveller from an antique land,"
+            - "Who said—"Two vast and trunkless legs of stone"
+        linecount:
+          type: string
+          description: The total number of lines in the poem (returned as a string).
+          example: "14"
+      required:
+        - title
+        - author
+        - lines
+        - linecount
+
+    PoemList:
+      type: array
+      items:
+        $ref: '#/components/schemas/Poem'
+
+    NotFound:
+      type: object
+      description: Returned when no poems match the query.
+      properties:
+        status:
+          type: integer
+          example: 404
+        reason:
+          type: string
+          example: "Not found"
+      required:
+        - status
+        - reason

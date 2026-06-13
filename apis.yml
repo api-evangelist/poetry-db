@@ -30,6 +30,8 @@ apis:
         url: https://github.com/thundercomb/poetrydb/blob/master/README.md
       - type: GitHubRepository
         url: https://github.com/thundercomb/poetrydb
+      - type: OpenAPI
+        url: https://raw.githubusercontent.com/api-evangelist/poetry-db/refs/heads/main/openapi/openapi.yml
     contact:
       - FN: thundercomb
         url: https://github.com/thundercomb

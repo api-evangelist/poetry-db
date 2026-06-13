@@ -1,0 +1,52 @@
+{
+  "@context": {
+    "@vocab": "https://schema.org/",
+    "poetrydb": "https://poetrydb.org/vocab#",
+    "title": "name",
+    "author": {
+      "@id": "author",
+      "@type": "@id"
+    },
+    "lines": "text",
+    "linecount": "poetrydb:linecount",
+    "Poem": "CreativeWork",
+    "Person": "Person"
+  },
+  "@type": "APIReference",
+  "name": "PoetryDB API",
+  "description": "Public REST API for searching English-language poems by author, title, lines, and line count.",
+  "url": "https://poetrydb.org",
+  "provider": {
+    "@type": "Organization",
+    "name": "thundercomb",
+    "url": "https://github.com/thundercomb"
+  },
+  "license": "https://www.gnu.org/licenses/old-licenses/gpl-2.0.html",
+  "encodingFormat": "application/json",
+  "potentialAction": [
+    {
+      "@type": "SearchAction",
+      "name": "Search by author",
+      "target": "https://poetrydb.org/author/{author}",
+      "query-input": "required name=author"
+    },
+    {
+      "@type": "SearchAction",
+      "name": "Search by title",
+      "target": "https://poetrydb.org/title/{title}",
+      "query-input": "required name=title"
+    },
+    {
+      "@type": "SearchAction",
+      "name": "Search by line content",
+      "target": "https://poetrydb.org/lines/{lines}",
+      "query-input": "required name=lines"
+    },
+    {
+      "@type": "SearchAction",
+      "name": "Search by line count",
+      "target": "https://poetrydb.org/linecount/{linecount}",
+      "query-input": "required name=linecount"
+    }
+  ]
+}

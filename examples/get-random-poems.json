@@ -1,0 +1,31 @@
+{
+  "summary": "Get random poems",
+  "description": "GET /random/2 — returns 2 randomly selected poems from the database.",
+  "request": {
+    "method": "GET",
+    "url": "https://poetrydb.org/random/2"
+  },
+  "response": {
+    "status": 200,
+    "body": [
+      {
+        "title": "Sonnet 18: Shall I compare thee to a summer's day?",
+        "author": "William Shakespeare",
+        "lines": [
+          "Shall I compare thee to a summer's day?",
+          "Thou art more lovely and more temperate:"
+        ],
+        "linecount": "14"
+      },
+      {
+        "title": "Because I could not stop for Death",
+        "author": "Emily Dickinson",
+        "lines": [
+          "Because I could not stop for Death –",
+          "He kindly stopped for me –"
+        ],
+        "linecount": "24"
+      }
+    ]
+  }
+}

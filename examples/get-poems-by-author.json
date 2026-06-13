@@ -1,0 +1,24 @@
+{
+  "summary": "Get poems by author (partial match)",
+  "description": "GET /author/Shakespeare — returns all poems where author name contains 'Shakespeare'.",
+  "request": {
+    "method": "GET",
+    "url": "https://poetrydb.org/author/Shakespeare"
+  },
+  "response": {
+    "status": 200,
+    "body": [
+      {
+        "title": "A Lover's Complaint",
+        "author": "William Shakespeare",
+        "lines": [
+          "From off a hill whose concave womb reworded",
+          "A plaintful story from a sistering vale,",
+          "My spirits to attend this double voice accorded,",
+          "And down I laid to list the sad-tuned tale;"
+        ],
+        "linecount": "329"
+      }
+    ]
+  }
+}
