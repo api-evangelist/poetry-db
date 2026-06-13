@@ -1,0 +1,18 @@
+name: PoetryDB Rate Limits
+description: PoetryDB does not publish formal rate limits. The API is free and open with no authentication requirements. No documented quotas, throttling policies, or burst limits exist. The service recommends caching responses where possible since the poetry data is static and sourced from public-domain works.
+url: https://poetrydb.org
+rateLimits:
+  - plan: Free
+    requests: undocumented
+    period: undocumented
+    burstLimit: undocumented
+    concurrency: undocumented
+    notes: No formal rate limiting policy is published. Consumers are encouraged to cache results to reduce load on the service. The API is backed by a Ruby/Sinatra application with a MongoDB datastore.
+headers:
+  rateLimitRemaining: not provided
+  rateLimitReset: not provided
+  rateLimitLimit: not provided
+recommendations:
+  - Cache API responses locally; poem data is static and rarely changes
+  - Avoid high-frequency polling; the data does not update in real time
+  - Use specific search parameters to reduce response payload size

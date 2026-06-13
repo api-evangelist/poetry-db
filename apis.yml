@@ -1,0 +1,56 @@
+aid: poetry-db
+name: PoetryDB
+description: PoetryDB is a public REST API providing programmatic access to a database of English-language poems. Developers can search the collection by author name, poem title, line content, and line count. The API requires no authentication or API key, returns JSON or plain text responses, and supports CORS. It is built on Ruby and Sinatra with a MongoDB datastore and is maintained as a free open-source resource for poets and developers.
+image: https://kinlane-productions.s3.amazonaws.com/apis-json/apis-json-logo.jpg
+url: https://raw.githubusercontent.com/api-evangelist/poetry-db/refs/heads/main/apis.yml
+created: '2026-06-13'
+modified: '2026-06-13'
+specificationVersion: '0.19'
+tags:
+  - Poetry
+  - Literature
+  - Public Domain
+  - English Language
+  - Search
+  - Open Data
+apis:
+  - aid: poetry-db:poetry-db
+    name: PoetryDB API
+    description: Search and retrieve English-language poems by author, title, line content, and line count. Returns structured JSON with title, author, lines array, and linecount fields. No authentication required.
+    image: https://kinlane-productions.s3.amazonaws.com/apis-json/apis-json-logo.jpg
+    humanURL: https://poetrydb.org
+    baseURL: https://poetrydb.org
+    tags:
+      - Poetry
+      - Literature
+      - Search
+      - Public Domain
+    properties:
+      - type: Documentation
+        url: https://github.com/thundercomb/poetrydb/blob/master/README.md
+      - type: GitHubRepository
+        url: https://github.com/thundercomb/poetrydb
+    contact:
+      - FN: thundercomb
+        url: https://github.com/thundercomb
+        X: https://x.com/thundercomb
+common:
+  - type: Website
+    url: https://poetrydb.org
+  - type: Documentation
+    url: https://github.com/thundercomb/poetrydb/blob/master/README.md
+  - type: GitHubOrg
+    url: https://github.com/thundercomb
+  - type: GitHubRepository
+    url: https://github.com/thundercomb/poetrydb
+  - type: X
+    url: https://x.com/po3db
+  - type: Plans
+    url: https://raw.githubusercontent.com/api-evangelist/poetry-db/refs/heads/main/plans/poetry-db-plans-pricing.yml
+  - type: RateLimits
+    url: https://raw.githubusercontent.com/api-evangelist/poetry-db/refs/heads/main/rate-limits/poetry-db-rate-limits.yml
+  - type: FinOps
+    url: https://raw.githubusercontent.com/api-evangelist/poetry-db/refs/heads/main/finops/poetry-db-finops.yml
+maintainers:
+  - FN: Kin Lane
+    email: kin@apievangelist.com

@@ -1,0 +1,22 @@
+name: PoetryDB Plans and Pricing
+description: PoetryDB offers a single free tier with no authentication, no API keys, and no formal usage quotas. The service is maintained as an open public resource for developers and poets.
+url: https://poetrydb.org
+plans:
+  - name: Free
+    description: Fully open and free access to the PoetryDB API. No registration, no API key, and no rate limits are formally documented. The service recommends caching results since the underlying poem data is static public-domain content.
+    price: 0
+    currency: USD
+    billing: none
+    authentication: none
+    rateLimit: undocumented
+    features:
+      - Access to all poem search endpoints
+      - Author search (partial and exact match)
+      - Title search (partial and exact match)
+      - Lines content search
+      - Line count filtering
+      - Random poem retrieval
+      - Multiple output field selection
+      - JSON and plain text response formats
+      - CORS enabled
+      - HTTPS supported

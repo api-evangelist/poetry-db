@@ -1,0 +1,20 @@
+name: PoetryDB FinOps
+description: PoetryDB is a fully free public API with no pricing tiers, no metered billing, and no cost associated with usage. There are no API keys, subscriptions, or payment methods required. FinOps considerations are limited to infrastructure costs incurred by consumers who self-host or proxy the API.
+url: https://poetrydb.org
+cost:
+  model: free
+  currency: USD
+  tiers:
+    - name: Free
+      monthlyBaseCost: 0
+      perRequestCost: 0
+      notes: No charges of any kind. The service is maintained by the open-source community.
+savingsOpportunities:
+  - strategy: Client-side caching
+    description: Cache poem responses in your application layer. Poem content is static public-domain data and does not change, making it ideal for long TTL caching (hours or days).
+    estimatedSavings: Reduces API call volume to near zero for repeat queries
+  - strategy: Batch retrieval
+    description: Use poemcount parameter to retrieve multiple poems in a single request rather than making individual calls.
+    estimatedSavings: Reduces total request count proportionally
+budgeting:
+  notes: No budget planning required for API access costs. Consumer infrastructure costs (compute, bandwidth) should be accounted for in application budgets.
