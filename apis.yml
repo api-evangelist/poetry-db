@@ -1,7 +1,7 @@
 aid: poetry-db
 name: PoetryDB
 description: PoetryDB is a public REST API providing programmatic access to a database of English-language poems. Developers can search the collection by author name, poem title, line content, and line count. The API requires no authentication or API key, returns JSON or plain text responses, and supports CORS. It is built on Ruby and Sinatra with a MongoDB datastore and is maintained as a free open-source resource for poets and developers.
-image: https://kinlane-productions.s3.amazonaws.com/apis-json/apis-json-logo.jpg
+image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
 url: https://raw.githubusercontent.com/api-evangelist/poetry-db/refs/heads/main/apis.yml
 created: '2026-06-13'
 modified: '2026-06-13'
@@ -17,7 +17,7 @@ apis:
   - aid: poetry-db:poetry-db
     name: PoetryDB API
     description: Search and retrieve English-language poems by author, title, line content, and line count. Returns structured JSON with title, author, lines array, and linecount fields. No authentication required.
-    image: https://kinlane-productions.s3.amazonaws.com/apis-json/apis-json-logo.jpg
+    image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
     humanURL: https://poetrydb.org
     baseURL: https://poetrydb.org
     tags:
