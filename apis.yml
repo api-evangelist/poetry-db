@@ -37,6 +37,10 @@ apis:
         url: https://github.com/thundercomb
         X: https://x.com/thundercomb
 common:
+  - type: VulnerabilityDisclosure
+    url: security/poetry-db-vulnerability-disclosure.yml
+  - type: DomainSecurity
+    url: security/poetry-db-domain-security.yml
   - type: Website
     url: https://poetrydb.org
   - type: Documentation

@@ -1,0 +1,15 @@
+generated: '2026-07-11'
+method: probed
+source: live DNS/TLS/HTTP probes of apis.yml + OpenAPI hosts
+hosts:
+- host: poetrydb.org
+  https: true
+  tls_version: TLSv1.3
+  cert_expires: Sep  9 00:38:35 2026 GMT
+  hsts: false
+domains:
+- domain: poetrydb.org
+  dnssec: false
+  caa: []
+  spf: false
+  dmarc: false
