@@ -49,6 +49,9 @@ apis:
         url: https://github.com/thundercomb
         X: https://x.com/thundercomb
 common:
+  - type: License
+    name: GPL-2.0
+    url: https://github.com/thundercomb/poetrydb/blob/master/LICENSE
   - type: VulnerabilityDisclosure
     url: security/poetry-db-vulnerability-disclosure.yml
   - type: DomainSecurity
