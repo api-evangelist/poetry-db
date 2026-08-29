@@ -1,6 +1,20 @@
 aid: poetry-db
 name: PoetryDB
 description: PoetryDB is a public REST API providing programmatic access to a database of English-language poems. Developers can search the collection by author name, poem title, line content, and line count. The API requires no authentication or API key, returns JSON or plain text responses, and supports CORS. It is built on Ruby and Sinatra with a MongoDB datastore and is maintained as a free open-source resource for poets and developers.
+deliveryModel:
+  model: open-core
+  license: GPL-2.0
+  open_source: true
+  commercial: true
+  callable_host: true
+  label: Open core · an OSS project plus a commercial hosted product
+  confidence: high
+  source:
+  - license
+  - openapi
+  - pricing
+  generated: '2026-08-28'
+  method: derived
 accessModel:
   pricing: free
   onboarding: open
@@ -49,6 +63,8 @@ apis:
         url: https://github.com/thundercomb
         X: https://x.com/thundercomb
 common:
+  - type: IssueTracker
+    url: https://github.com/thundercomb/poetrydb/issues
   - type: License
     name: GPL-2.0
     url: https://github.com/thundercomb/poetrydb/blob/master/LICENSE
