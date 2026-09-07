@@ -63,6 +63,8 @@ apis:
         url: https://github.com/thundercomb
         X: https://x.com/thundercomb
 common:
+  - type: PublicAPIsListing
+    url: https://github.com/public-apis/public-apis
   - type: IssueTracker
     url: https://github.com/thundercomb/poetrydb/issues
   - type: License
