@@ -1,3 +1,7 @@
+# Provenance stamped 2026-10-07 (roadmap#943): written by an API Evangelist sweep (undated — the file carries no date and git cannot supply one), not
+# harvested from the provider. `method: generated` so the economics campaign may replace it with a
+# dated, verbatim transcription; every figure below is unverified until it does.
+method: generated
 name: PoetryDB Plans and Pricing
 description: PoetryDB offers a single free tier with no authentication, no API keys, and no formal usage quotas. The service is maintained as an open public resource for developers and poets.
 url: https://poetrydb.org
