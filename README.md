@@ -64,35 +64,129 @@
 > Full detail: **[Where this data comes from](https://apievangelist.com/about/where-our-data-comes-from)**
 <!-- API-EVANGELIST-PROVENANCE:END -->
 
-PoetryDB is a public REST API providing programmatic access to a database of English-language poems. Developers can search the collection by author name, poem title, line content, and line count. The API requires no authentication or API key, returns JSON or plain text responses, and supports CORS.
+PoetryDB is a public REST API providing programmatic access to a database of English-language poems. Developers can search the collection by author name, poem title, line content, and line count. The API requires no authentication or API key, returns JSON or plain text responses, and supports CORS. It is built on Ruby and Sinatra with a MongoDB datastore and is maintained as a free open-source resource for poets and developers.
 
-**Base URL:** https://poetrydb.org
+**Areas:** Poetry · Literature · Public Domain · English Language · Search · Open Data
 
-**GitHub:** https://github.com/thundercomb/poetrydb
+## PoetryDB on APIs.io
 
-## Endpoints
+Everything profiled for PoetryDB is published on APIs.io rather than in this repository. Start at the provider page — **[apis.io/providers/poetry-db/](https://apis.io/providers/poetry-db/)** — or go straight to one of the APIs or properties below.
 
-| Input Field | Example | Description |
-|---|---|---|
-| `/author` | `/author/Shakespeare` | Search poems by author name |
-| `/title` | `/title/Sonnet 18` | Search poems by title |
-| `/lines` | `/lines/Shall I compare` | Search by line content |
-| `/linecount` | `/linecount/14` | Filter by number of lines |
-| `/random` | `/random/3` | Retrieve random poems |
+### APIs (1)
 
-Append `:abs` for exact matching. Combine fields with commas. Select output fields by appending them to the path. Append `.text` for plain text output (default is JSON).
+- [PoetryDB API](https://apis.io/apis/poetry-db/poetry-db/) — Search and retrieve English-language poems by author, title, line content, and line count. Returns structured JSON with title, author, lines array, and…
 
-## Authentication
+### Published properties
 
-None required.
+Each property below is a page on APIs.io carrying the machine-readable artifact and what it says.
 
-## Pricing
+#### JSON Schema (1)
 
-Free with no usage quotas or rate limits documented.
+The data models the API reads and writes.
 
-## Resources
+- [Poem](https://apis.io/schemas/poetry-db/poem/)
 
-- [APIs.json Profile](apis.yml)
-- [Plans and Pricing](plans/poetry-db-plans-pricing.yml)
-- [Rate Limits](rate-limits/poetry-db-rate-limits.yml)
-- [FinOps](finops/poetry-db-finops.yml)
+#### JSON-LD (1)
+
+Linked-data contexts for the provider's vocabulary.
+
+- [context Context](https://apis.io/jsonld/poetry-db/context/)
+
+#### Examples (3)
+
+Example requests and responses.
+
+- [Get Poems By Author](https://apis.io/examples/poetry-db/get-poems-by-author/)
+- [Get Poems By Linecount](https://apis.io/examples/poetry-db/get-poems-by-linecount/)
+- [Get Random Poems](https://apis.io/examples/poetry-db/get-random-poems/)
+
+#### Governance rules (1)
+
+Spectral rulesets for the provider's contracts.
+
+- [PoetryDB — jsonschema rules](https://apis.io/rules/poetry-db/poetry-db-jsonschema-spectral-rules/)
+
+#### Security (2)
+
+Authentication, trust centre, and vulnerability disclosure.
+
+- [Poetry Db Domain Security](https://apis.io/security/poetry-db/poetry-db-domain-security/)
+- [Poetry Db Vulnerability Disclosure](https://apis.io/security/poetry-db/poetry-db-vulnerability-disclosure/)
+
+#### Plans and pricing (1)
+
+Published plans, tiers and prices.
+
+- [Poetry Db Plans Pricing](https://apis.io/plans/poetry-db/poetry-db-plans-pricing/)
+
+#### Rate limits (1)
+
+Published request limits.
+
+- [Poetry Db Rate Limits](https://apis.io/rate-limits/poetry-db/poetry-db-rate-limits/)
+
+#### FinOps (1)
+
+What the API costs to run, by operation.
+
+- [Poetry Db Finops](https://apis.io/finops/poetry-db/poetry-db-finops/)
+
+## Where to find this API
+
+Links to the company's own pages. This repository publishes no copy of their specifications — the canonical document is theirs and lives at the URLs below.
+
+- [Website](https://poetrydb.org)
+- [Documentation](https://github.com/thundercomb/poetrydb/blob/master/README.md)
+
+## API Evangelist rating
+
+**Kin Score 19.1** — emerging · rubric 0.24.0 · scored 2026-10-17
+
+| Facet | Score |
+|---|---|
+| Discoverability | 57.1 |
+| Contract quality | 40.7 |
+| Contract governance | 9.8 |
+| Operational transparency | 5.3 |
+| Developer ergonomics | 9.5 |
+| Access clarity | 5.3 |
+
+**Agent readiness 15.5** — agent-aware
+
+| Agent-readiness dimension | Result |
+|---|---|
+| Spec Presence | yes |
+| Agentic Access | — |
+| Reversibility Documented | — |
+| MCP Server | — |
+| Auth Clarity | — |
+| Idempotency | — |
+| Error Semantics | — |
+| OpenAPI Examples | — |
+| Rate Limit Signal | documented (partial credit) |
+| Event Surface Described | — |
+| Agent Skills | — |
+| Well Known Catalog | — |
+| Consent Identity | — |
+| Agent Card | — |
+| Dry Run Mode | — |
+| Delegated Identity | — |
+| Protected Resource Metadata | — |
+| Dynamic Client Registration | — |
+| Agentic Commerce | — |
+
+**Regulatory alignment 16.7** — Government & Public Sector
+
+The rubric is published at [github.com/api-evangelist/kin-score](https://github.com/api-evangelist/kin-score). The per-check breakdown behind these numbers — which checks were earned, partial or missed — along with score history and how this provider compares to its peers, is available at [apis.io/providers/poetry-db/](https://apis.io/providers/poetry-db/).
+
+## How this profile is made
+
+API Evangelist profiles a company's public API surface the way a developer would find it: the website, developer portal and documentation, the specifications it publishes, its public repositories, and its pricing, status and changelog pages. From that it derives the properties above — contracts split per API, workflows, schemas, collections, governance rules, plans and rate limits — and scores them against the published [Kin Score rubric](https://github.com/api-evangelist/kin-score).
+
+The artifacts are published on [APIs.io](https://apis.io), not in this repository. This repository is the public record for PoetryDB: the place to say something is wrong, missing or out of date, and to ask for a re-score or a removal.
+
+## Open an issue
+
+- **Something about this listing** — a wrong description, a missing API, a stale artifact or a question about the rating: [open an issue on this repository](https://github.com/api-evangelist/poetry-db/issues/new).
+- **A new API, or one that is not in the catalog yet** — [submit it on APIs.io](https://apis.io/add/).
+- **Anything else** — [the APIs.io inbox](https://github.com/api-search/inbox/issues/new) or [info@apievangelist.com](mailto:info@apievangelist.com).
